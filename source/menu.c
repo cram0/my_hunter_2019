@@ -9,8 +9,9 @@
 
 void show_menu_background(sfRenderWindow *window)
 {
-    sfTexture *background_texture = sfTexture_createFromFile("img/background/menu/menubg.png", NULL);
-    sfSprite *background_sprite = sfSprite_create();
-    sfSprite_setTexture(background_sprite, background_texture, sfTrue);
-    sfRenderWindow_drawSprite(window, background_sprite, NULL);
+    menu_s menu;
+    menu.bg_texture = sfTexture_createFromFile("img/background/menu/menubg.png", NULL);
+    menu.bg_sprite = sfSprite_create();
+    sfSprite_setTexture(menu.bg_sprite, menu.bg_texture, sfTrue);
+    sfRenderWindow_drawSprite(window, menu.bg_sprite, NULL);
 }
