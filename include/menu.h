@@ -8,6 +8,8 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include <SFML/Graphics.h>
 
+void show_menu_background(sfRenderWindow *);
 
 #endif

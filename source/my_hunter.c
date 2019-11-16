@@ -9,7 +9,7 @@
 
 int main(void)
 {
-    sfVideoMode mode = {800, 600, 32};
+    sfVideoMode mode = {800, 750, 32};
     sfRenderWindow* window = sfRenderWindow_create(mode, 
     "Bat Hunt", sfResize | sfClose, NULL);
     sfWindow_setFramerateLimit(window, 60);

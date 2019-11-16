@@ -16,8 +16,8 @@ void start_game(sfRenderWindow *window)
         {
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(window);
+            show_menu_background(window);
         }
-        sfRenderWindow_clear(window, sfBlue);
         sfRenderWindow_display(window);
     }
 }

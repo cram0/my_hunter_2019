@@ -8,6 +8,7 @@
 #ifndef MY_HUNTER_H
 #define MY_HUNTER_H
 
+#include "menu.h"
 #include <SFML/Audio.h>
 #include <SFML/Graphics.h>
 #include <SFML/System.h>
