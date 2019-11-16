@@ -7,7 +7,7 @@
 
 NAME    =       my_hunter
 
-SRC     =       my_hunter.c \
+SRC     =       $(shell find . -name '*.c')
 
 OBJ     =       $(SRC:.c=.o)
 
@@ -18,11 +18,10 @@ CFLAGS  +=      -I./include
 all     :       $(NAME)
 
 $(NAME) :       $(OBJ)
-				gcc -o $(NAME) $(OBJ) -l csfml-graphics -l csfml-audio
+				gcc -o $(NAME) $(OBJ) -l csfml-graphics -l csfml-audio -l csfml-window
 
 clean   :
-				rm -f $(OBJ)
-				rm -rf *.o
+				find . -name "*.o" -type f -delete
 
 fclean  :       clean
 				rm -f $(NAME)
