@@ -16,7 +16,7 @@ void start_game(sfRenderWindow *window)
         {
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(window);
-            show_menu_background(window);
+            show_main_menu_background(window);
         }
         sfRenderWindow_display(window);
     }

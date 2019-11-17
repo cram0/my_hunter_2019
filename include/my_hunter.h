@@ -21,5 +21,6 @@ enum game_state{
     };
 
 void start_game(sfRenderWindow *);
+void show_main_menu(sfRenderWindow *);
 
 #endif
