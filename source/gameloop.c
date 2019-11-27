@@ -93,12 +93,14 @@ void ajInitialize_game_background(game_background _game_background)
 {
     _game_background.texture = sfTexture_createFromFile("img/background/menu/menubg.png", NULL);
     _game_background.sprite = sfSprite_create();
+    sfSprite_setScale(_game_background.sprite, (sfVector2f){2, 2});
     sfSprite_setTexture(_game_background.sprite, _game_background.texture, sfTrue);
 }
 
 void ajInitialize_menu_scene(menu_scene _menu_scene)
 {
     ajInitialize_menu_background(_menu_scene.menu_background);
+    ajInitialize_menu_choice(_menu_scene.choice);
 }
 
 void ajInitialize_menu_background(menu_background _menu_background)
@@ -106,4 +108,9 @@ void ajInitialize_menu_background(menu_background _menu_background)
     _menu_background.texture = sfTexture_createFromFile("img/background/menu/menubg.png", NULL);
     _menu_background.sprite = sfSprite_create();
     sfSprite_setTexture(_menu_background.sprite, _menu_background.texture, sfTrue);
+}
+
+void ajInitialize_menu_choice(menu_choice _menu_choice)
+{
+    _menu_choice.index = 0;
 }

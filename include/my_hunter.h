@@ -16,11 +16,11 @@
 #include <SFML/System.h>
 #include <SFML/Window.h>
 
-enum game_state{
+enum game_state {
     MENU,
     INGAME,
     PAUSED
-};
+} enum_state;
 
 typedef struct bat {
     int x;
@@ -47,12 +47,16 @@ typedef struct game_scene {
     game_background game_background;
 } game_scene ;
 
+typedef struct menu_choice {
+    sfSprite *sprite;
+    sfTexture *texture;
+    int index;
+} menu_choice ;
+
 typedef struct menu_scene {
-    int choice;
+    menu_choice choice;
     menu_background menu_background;
 } menu_scene ;
-
-
 
 typedef struct game_core {
     int state;
