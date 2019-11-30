@@ -8,8 +8,8 @@
 #ifndef MY_HUNTER_H
 #define MY_HUNTER_H
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 750
+#define WINDOW_WIDTH 896
+#define WINDOW_HEIGHT 840
 
 #include <SFML/Audio.h>
 #include <SFML/Graphics.h>
@@ -69,5 +69,20 @@ typedef struct game_ui {
 } game_ui;
 
 void start_game(sfRenderWindow *);
+void ajCheck_state(game_core *);
+void ajUpdate_game_core(game_core *);
+void ajUpdate_game_scene(game_scene *);
+void ajUpdate_bat(bat *);
+void ajUpdate_menu_scene(menu_scene *);
+void ajDisplay_game_core(sfRenderWindow *, game_core *);
+void ajDisplay_game_scene(sfRenderWindow *, game_scene *);
+void ajDisplay_menu_scene(sfRenderWindow *, menu_scene *);
+void ajInitialize_game_core(game_core *);
+void ajInitialize_game_scene (game_scene *);
+void ajInitialize_menu_scene(menu_scene *);
+void ajInitialize_bat(bat *);
+void ajInitialize_game_background(game_background *);
+void ajInitialize_menu_background(menu_background *);
+void ajInitialize_menu_choice(menu_choice *);
 
 #endif

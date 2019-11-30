@@ -10,9 +10,8 @@
 int main(void)
 {
     sfVideoMode mode = {WINDOW_WIDTH, WINDOW_HEIGHT, 32};
-    sfRenderWindow *window = sfRenderWindow_create(mode, "Bat Hunt", sfResize | sfClose, NULL);
+    sfRenderWindow *window = sfRenderWindow_create(mode, "Bat Hunt", sfClose, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
     start_game(window);
-
     return (0);
 }

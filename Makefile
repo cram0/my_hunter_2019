@@ -18,7 +18,7 @@ CFLAGS  +=      -I./include
 all     :       $(NAME)
 
 $(NAME) :       $(OBJ)
-				gcc -o $(NAME) $(OBJ) -l csfml-graphics -l csfml-audio -l csfml-window
+				gcc -o $(NAME) $(OBJ) -l csfml-graphics -l csfml-audio -l csfml-window -l csfml-system
 
 clean   :
 				find . -name "*.o" -type f -delete
