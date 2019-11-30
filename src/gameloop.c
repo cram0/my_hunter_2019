@@ -96,7 +96,7 @@ void ajDisplay_menu_scene(sfRenderWindow *window, menu_scene *_menu_scene)
 
 void ajInitialize_game_core(game_core *_game_core)
 {
-    _game_core->state = INGAME;
+    _game_core->state = MENU;
     ajInitialize_game_scene(&_game_core->game_scene);
     ajInitialize_menu_scene(&_game_core->menu_scene);
 }

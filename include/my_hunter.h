@@ -21,7 +21,7 @@ enum game_state {
     MENU,
     INGAME,
     PAUSED
-} enum_state;
+} game_state;
 
 typedef struct bat {
     int x;
