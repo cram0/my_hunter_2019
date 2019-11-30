@@ -11,6 +11,7 @@
 #define WINDOW_WIDTH 896
 #define WINDOW_HEIGHT 840
 
+#include <stdbool.h>
 #include <SFML/Audio.h>
 #include <SFML/Graphics.h>
 #include <SFML/System.h>
@@ -25,10 +26,13 @@ enum game_state {
 typedef struct bat {
     int x;
     int y;
+    bool facing_right;
+    bool going_around;
     sfSprite *sprite;
     sfTexture *texture;
     sfSound *sound;
     sfIntRect rect;
+    sfClock *clock;
 } bat ;
 
 typedef struct menu_background {
@@ -69,10 +73,11 @@ typedef struct game_ui {
 } game_ui;
 
 void start_game(sfRenderWindow *);
-void ajCheck_state(game_core *);
+int ajGet_state(game_core *);
 void ajUpdate_game_core(game_core *);
 void ajUpdate_game_scene(game_scene *);
 void ajUpdate_bat(bat *);
+void ajUpdate_bat_animation(bat *);
 void ajUpdate_menu_scene(menu_scene *);
 void ajDisplay_game_core(sfRenderWindow *, game_core *);
 void ajDisplay_game_scene(sfRenderWindow *, game_scene *);

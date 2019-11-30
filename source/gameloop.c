@@ -10,12 +10,12 @@
 void start_game(sfRenderWindow *window)
 {
     sfEvent event;
-    game_core ggGame_core;
-    ajInitialize_game_core(&ggGame_core);
+    game_core game_core;
+    ajInitialize_game_core(&game_core);
     while (sfRenderWindow_isOpen(window))
     {
-        ajUpdate_game_core(&ggGame_core);
-        ajDisplay_game_core(window, &ggGame_core);
+        ajUpdate_game_core(&game_core);
+        ajDisplay_game_core(window, &game_core);
         while (sfRenderWindow_pollEvent(window, &event))
         {
             if (event.type == sfEvtClosed)
@@ -25,41 +25,54 @@ void start_game(sfRenderWindow *window)
     }
 }
 
-void ajCheck_state(game_core *_game_core)
+int ajGet_state(game_core *_game_core)
 {
-
+    return (_game_core->state);
 }
 
 void ajUpdate_game_core(game_core *_game_core)
 {
-    ajCheck_state(_game_core);
-    ajUpdate_game_scene(&_game_core->game_scene);
-    ajUpdate_menu_scene(&_game_core->menu_scene);
+    if (ajGet_state(_game_core) == MENU)
+        ajUpdate_menu_scene(&_game_core->menu_scene);
+    else if (ajGet_state(_game_core) == INGAME)
+        ajUpdate_game_scene(&_game_core->game_scene);
 }
 
 void ajUpdate_game_scene(game_scene *_game_scene)
 {
     ajUpdate_bat(&_game_scene->bat1);
-    ajUpdate_bat(&_game_scene->bat2);
+    // ajUpdate_bat(&_game_scene->bat2);
 }
 
 void ajUpdate_bat(bat *_bat)
 {
     sfSprite_setPosition(_bat->sprite, (sfVector2f){_bat->x, _bat->y});
-    _bat->x++;
-    if (_bat->x > WINDOW_WIDTH)
+    _bat->x += 3;
+    if (_bat->x > WINDOW_WIDTH + (_bat->rect.width * 3.5))
         _bat->x = 0;
+    ajUpdate_bat_animation(_bat);
+}
+
+void ajUpdate_bat_animation(bat *_bat)
+{
+    if (_bat->facing_right == true)
+        sfSprite_setScale(_bat->sprite, (sfVector2f){-3.5, 3.5});
+    if (_bat->going_around == false) {
+        _bat->rect.left += 16;
+        if (_bat->rect.left > 112)
+            _bat->going_around = true;
+    }
+    if (_bat->going_around == true) {
+        _bat->rect.left -= 16;
+        if (_bat->rect.left == 0)
+            _bat->going_around = false;
+    }
+    sfSprite_setTextureRect(_bat->sprite, _bat->rect);
 }
 
 void ajUpdate_menu_scene(menu_scene *_menu_scene)
 {
-    if (sfKeyboard_isKeyPressed(sfKeyDown))
-        _menu_scene->choice.index = (_menu_scene->choice.index + 1) % 2;
-    if (sfKeyboard_isKeyPressed(sfKeyUp))
-        _menu_scene->choice.index = (_menu_scene->choice.index - 1) % 2;
-    if (sfKeyboard_isKeyPressed(sfKeyEnter) && _menu_scene->choice.index == 0) {
-        
-    }
+
 }
 
 void ajDisplay_game_core(sfRenderWindow *window, game_core *_game_core)
@@ -78,7 +91,7 @@ void ajDisplay_game_scene(sfRenderWindow *window, game_scene *_game_scene)
 
 void ajDisplay_menu_scene(sfRenderWindow *window, menu_scene *_menu_scene)
 {
-    
+    sfRenderWindow_drawSprite(window, _menu_scene->menu_background.sprite, NULL);
 }
 
 void ajInitialize_game_core(game_core *_game_core)
@@ -97,17 +110,18 @@ void ajInitialize_game_scene (game_scene *_game_scene)
 
 void ajInitialize_bat(bat *_bat)
 {
+    _bat->facing_right = true;
+    _bat->going_around = false;
     _bat->rect.left = 0;
     _bat->rect.top = 0;
     _bat->rect.width = 16;
     _bat->rect.height = 29;
-    _bat->x = 0;
+    _bat->x = -32;
     _bat->y = 0;
     _bat->texture = sfTexture_createFromFile("img/sprite/bat/bat.png", NULL);
     _bat->sprite = sfSprite_create();
     sfSprite_setTexture(_bat->sprite, _bat->texture, sfTrue);
     sfSprite_setTextureRect(_bat->sprite, _bat->rect);
-    sfSprite_setScale(_bat->sprite, (sfVector2f){3.5, 3.5});
 }
 
 void ajInitialize_game_background(game_background *_game_background)

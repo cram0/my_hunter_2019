@@ -18,10 +18,11 @@ CFLAGS  +=      -I./include
 all     :       $(NAME)
 
 $(NAME) :       $(OBJ)
-				gcc -o $(NAME) $(OBJ) -l csfml-graphics -l csfml-audio -l csfml-window -l csfml-system
+				gcc -o $(NAME) $(OBJ) -l csfml-graphics -l csfml-audio -l csfml-window -l csfml-system -g3
 
 clean   :
 				find . -name "*.o" -type f -delete
+				find . -name "vgcore.*" -type f -delete
 
 fclean  :       clean
 				rm -f $(NAME)
