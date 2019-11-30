@@ -52,9 +52,9 @@ typedef struct game_scene {
 } game_scene ;
 
 typedef struct menu_choice {
+    int index;
     sfSprite *sprite;
     sfTexture *texture;
-    int index;
 } menu_choice ;
 
 typedef struct menu_scene {
