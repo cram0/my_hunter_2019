@@ -125,7 +125,7 @@ void ajinitialize_game_core(game_core *, sfRenderWindow *);
 void ajinitialize_game_scene (game_scene *, sfRenderWindow *);
 void ajinitialize_menu_scene(menu_scene *, sfRenderWindow *);
 void ajinitialize_bat(bat *);
-void ajupdate_menu_event(menu_scene *, int *)
+void ajupdate_menu_event(menu_scene *, int *);
 void ajinitialize_game_background(game_background *);
 void ajinitialize_game_cursor(game_cursor *);
 void ajinitialize_menu_background(menu_background *);
