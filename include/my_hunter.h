@@ -71,6 +71,7 @@ typedef struct game_scene {
     game_background game_background;
     sfEvent event;
     sfRenderWindow *window;
+    sfMusic *music;
 } game_scene ;
 
 typedef struct menu_choice {
@@ -83,6 +84,8 @@ typedef struct menu_scene {
     menu_choice choice;
     menu_background menu_background;
     sfEvent event;
+    sfRenderWindow *window;
+    sfMusic *music;
 } menu_scene ;
 
 typedef struct game_core {
@@ -97,29 +100,31 @@ typedef struct game_ui {
 } game_ui;
 
 void start_game(sfRenderWindow *);
-void ajUpdate_game_core(game_core *);
-void ajUpdate_game_scene(game_scene *, int *);
-void ajUpdate_cursor(game_scene *);
-void ajUpdate_bat(bat *);
-void ajUpdate_bat_position(bat *);
-void ajUpdate_bat_animation(bat *);
-void ajUpdate_bat_animation_rectangle(bat *);
-void ajUpdate_bat_random_spawn_height(bat *);
-void ajUpdate_bat_random_spawn_side(bat *);
-void ajUpdate_game_event(game_scene *);
-void ajUpdate_menu_scene(menu_scene *, int *);
-void ajUpdate_reset_clock(sfClock *);
-void ajDisplay_game_core(sfRenderWindow *, game_core *);
-void ajDisplay_game_scene(sfRenderWindow *, game_scene *);
-void ajDisplay_menu_scene(sfRenderWindow *, menu_scene *);
-void ajInitialize_game_core(game_core *, sfRenderWindow *);
-void ajInitialize_game_scene (game_scene *, sfRenderWindow *);
-void ajInitialize_menu_scene(menu_scene *);
-void ajInitialize_bat(bat *);
-void ajInitialize_game_background(game_background *);
-void ajInitialize_game_cursor(game_cursor *);
-void ajInitialize_menu_background(menu_background *);
-void ajInitialize_menu_choice(menu_choice *);
-int ajGet_state(game_core *);
+void ajupdate_bat(bat *);
+void ajupdate_bat_position(bat *);
+void ajupdate_bat_animation(bat *);
+void ajupdate_bat_animation_rectangle(bat *);
+void ajupdate_bat_random_spawn_height(bat *);
+void ajupdate_bat_random_spawn_side(bat *);
+void ajupdate_cursor_position(game_scene *);
+void ajupdate_game_core(game_core *);
+void ajupdate_game_event(game_scene *, int *);
+void ajupdate_game_scene(game_scene *, int *);
+void ajupdate_game_scene_music(game_scene *);
+void ajupdate_menu_scene(menu_scene *, int *);
+void ajupdate_menu_scene_music(menu_scene *);
+void ajupdate_reset_clock(sfClock *);
+void ajdisplay_game_core(sfRenderWindow *, game_core *);
+void ajdisplay_game_scene(sfRenderWindow *, game_scene *);
+void ajdisplay_menu_scene(sfRenderWindow *, menu_scene *);
+void ajinitialize_game_core(game_core *, sfRenderWindow *);
+void ajinitialize_game_scene (game_scene *, sfRenderWindow *);
+void ajinitialize_menu_scene(menu_scene *, sfRenderWindow *);
+void ajinitialize_bat(bat *);
+void ajinitialize_game_background(game_background *);
+void ajinitialize_game_cursor(game_cursor *);
+void ajinitialize_menu_background(menu_background *);
+void ajinitialize_menu_choice(menu_choice *);
+int ajget_state(game_core *);
 
 #endif

@@ -7,7 +7,7 @@
 
 #include "../include/my_hunter.h"
 
-int main(void)
+int main(int ac, char **av)
 {
     sfVideoMode mode = {WINDOW_WIDTH, WINDOW_HEIGHT, 32};
     sfRenderWindow *window = sfRenderWindow_create(mode, "Bat Hunt", sfClose, NULL);
