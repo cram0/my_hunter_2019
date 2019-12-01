@@ -8,10 +8,6 @@
 #ifndef MY_HUNTER_H
 #define MY_HUNTER_H
 
-#define WINDOW_WIDTH 896
-#define WINDOW_HEIGHT 840
-#define GAME_FRAMERATE 60
-
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
@@ -25,7 +21,12 @@ enum game_state {
     MENU,
     INGAME,
     PAUSED
-} game_state;
+} game_state ;
+
+enum menu_state {
+    PLAY,
+    QUIT
+} menu_state ;
 
 enum bat_spawn_side {
     LEFT,
@@ -111,8 +112,11 @@ void ajupdate_game_core(game_core *);
 void ajupdate_game_event(game_scene *, int *);
 void ajupdate_game_scene(game_scene *, int *);
 void ajupdate_game_scene_music(game_scene *);
+void ajupdate_menu_choice_cursor(menu_scene *, int *);
 void ajupdate_menu_scene(menu_scene *, int *);
 void ajupdate_menu_scene_music(menu_scene *);
+void ajupdate_mouse_click(game_scene *);
+void ajupdate_mouse_click_check(game_scene *);
 void ajupdate_reset_clock(sfClock *);
 void ajdisplay_game_core(sfRenderWindow *, game_core *);
 void ajdisplay_game_scene(sfRenderWindow *, game_scene *);
@@ -124,7 +128,7 @@ void ajinitialize_bat(bat *);
 void ajinitialize_game_background(game_background *);
 void ajinitialize_game_cursor(game_cursor *);
 void ajinitialize_menu_background(menu_background *);
-void ajinitialize_menu_choice(menu_choice *);
+void ajinitialize_menu_choice_cursor(menu_choice *);
 int ajget_state(game_core *);
 
 #endif
